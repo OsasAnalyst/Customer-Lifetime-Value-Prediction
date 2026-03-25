@@ -12,7 +12,7 @@ Lumora Commerce was allocating the same retention budget to every customer regar
 
 A 5% improvement in retention can grow profits by 25 to 95%. But you can't improve what you can't measure.
 
----
+
 
 ## What This Project Does
 
@@ -21,7 +21,7 @@ A 5% improvement in retention can grow profits by 25 to 95%. But you can't impro
 - Serves predictions through a REST API that can plug directly into Klaviyo or any CRM
 - Deployed with Docker so it runs consistently anywhere
 
----
+
 
 ## Dataset
 
@@ -30,7 +30,7 @@ https://archive.ics.uci.edu/dataset/502/online+retail+ii
 
 Real transactions from a UK-based online retailer. About 500k rows covering December 2009 to December 2010.
 
----
+
 
 ## Project Structure
 ```
@@ -40,6 +40,7 @@ ltv-retention-project/
 │   ├── schemas.py            
 │   └── predict.py            
 ├── data/
+|   ├── problem statement
 │   ├── raw/                  
 │   └── processed/            
 ├── models/
