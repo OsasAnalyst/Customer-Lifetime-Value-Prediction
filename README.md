@@ -4,11 +4,11 @@ A machine learning project built for a DTC e-commerce brand to predict how much 
 
 The goal is simple: stop treating every customer the same. Some customers are worth fighting for. Others aren't. This system tells you which is which.
 
----
+
 
 ## The Problem
 
-Lumora Commerce was allocating the same retention budget to every customer regardless of their actual value. No system existed to predict future spend, which meant loyalty rewards, email flows, and winback campaigns were all misdirected.
+Lumora Commerce was allocating the same retention budget to every customer regardless of their actual value. There were no system to predict future spend, which means loyalty rewards, email flows, and winback campaigns were misdirected.
 
 A 5% improvement in retention can grow profits by 25 to 95%. But you can't improve what you can't measure.
 
@@ -28,9 +28,7 @@ A 5% improvement in retention can grow profits by 25 to 95%. But you can't impro
 Online Retail II — UCI Machine Learning Repository  
 https://archive.ics.uci.edu/dataset/502/online+retail+ii
 
-Real transactions from a UK-based online retailer. About 500k rows covering December 2009 to December 2010. One sheet was used after cleaning.
-
-Download the file and place it in `data/raw/` before running the notebooks.
+Real transactions from a UK-based online retailer. About 500k rows covering December 2009 to December 2010.
 
 ---
 
@@ -38,25 +36,23 @@ Download the file and place it in `data/raw/` before running the notebooks.
 ```
 ltv-retention-project/
 ├── api/
-│   ├── main.py               # FastAPI app
-│   ├── schemas.py            # Request and response models
-│   └── predict.py            # Model loading and prediction logic
+│   ├── main.py               
+│   ├── schemas.py            
+│   └── predict.py            
 ├── data/
-│   ├── raw/                  # Original dataset (not tracked in git)
-│   └── processed/            # Cleaned and engineered features
+│   ├── raw/                  
+│   └── processed/            
 ├── models/
-│   ├── ltv_model.pkl         # Trained Linear Regression weights
-│   ├── scaler.pkl            # StandardScaler
-│   └── feature_cols.pkl      # Feature column names
+│   └── scratch/
+│       └── linear_regression.py  
+│   ├── ltv_model.pkl         
+│   ├── scaler.pkl            
+│   └── feature_cols.pkl      
 ├── notebooks/
 │   ├── 01_eda.ipynb
 │   ├── 02_feature_engineering.ipynb
 │   ├── 03_feature_selection.ipynb
 │   └── 04_modelling.ipynb
-├── src/
-│   └── models/
-│       └── scratch/
-│           └── linear_regression.py   # Built from scratch
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
@@ -80,7 +76,7 @@ All features are built from the observation window only. No data from the predic
 | Unique months active | How many months the customer placed at least one order |
 | Last month revenue | Revenue in the final month of the observation window |
 
-Log transformation was applied to all features to handle right skew.
+Log transformation was applied to all the features to handle skewness.
 
 ---
 
@@ -100,11 +96,11 @@ Linear Regression from scratch was selected as the final model.
 
 ## Why R2 is Low and Why That's Honest
 
-40% of customers had zero revenue in the prediction window. They bought during the observation period but never came back. A regression model treats zero as just another value to predict, but zero here means something different — it means the customer churned.
+40% of customers had zero revenue in the prediction window. They bought during the observation period but never came back. A regression model treats zero as just another value to predict, but zero here means something different, it means the customer churned.
 
-This zero-inflation problem, combined with only 12 months of training data and a 3-month prediction window, puts a real ceiling on R2. Longer transaction history and a 6 to 12 month prediction window would improve results significantly.
+This zero-inflation problem, and also combined with only 12 months of training data and a 3-month prediction window, puts a real ceiling on R2. Having a longer transaction history and a 6 to 12 month prediction window would improve results significantly.
 
-Despite the R2, the model captures directional signal. Higher-value customers consistently score higher than lower-value ones. The tier assignments and ranked output are actionable.
+Despite the R2, the model still captures directional signal. Higher-value customers consistently score higher than lower-value ones. The tier assignments and also the ranked output are very actionable.
 
 ---
 
