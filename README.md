@@ -59,7 +59,6 @@ ltv-retention-project/
 └── README.md
 ```
 
----
 
 ## Features Engineered
 
@@ -79,7 +78,6 @@ All features are built from the observation window only. No data from the predic
 
 Log transformation was applied to all the features to handle skewness.
 
----
 
 ## Model Results
 
@@ -93,7 +91,6 @@ Log transformation was applied to all the features to handle skewness.
 
 Linear Regression from scratch was selected as the final model.
 
----
 
 ## Why R2 is Low and Why That's Honest
 
@@ -103,7 +100,6 @@ This zero-inflation problem, and also combined with only 12 months of training d
 
 Despite the R2, the model still captures directional signal. Higher-value customers consistently score higher than lower-value ones. The tier assignments and also the ranked output are very actionable.
 
----
 
 ## LTV Tiers
 
@@ -114,7 +110,6 @@ Despite the R2, the model still captures directional signal. Higher-value custom
 | Silver | Nurture sequences and cross-sell |
 | At-Risk | Low-cost winback or deprioritise |
 
----
 
 ## Running Locally
 ```bash
@@ -124,7 +119,6 @@ uvicorn api.main:app --reload
 
 API docs at: http://127.0.0.1:8000/docs
 
----
 
 ## Running with Docker
 ```bash
@@ -134,7 +128,6 @@ docker run -p 8000:8000 lumora-ltv-api
 
 API docs at: http://127.0.0.1:8000/docs
 
----
 
 ## API Usage
 ```
@@ -159,13 +152,11 @@ Response:
 }
 ```
 
----
 
 ## Tech Stack
 
 Python, FastAPI, Docker, scikit-learn, XGBoost, pandas, numpy, matplotlib, seaborn
 
----
 
 ## Contact
 
